@@ -8,7 +8,7 @@ import {
   TouchableNativeFeedback,
   ImageBackground,
 } from 'react-native';
-
+import DefaultText from './DefaultText';
 const MealItem = props => {
   let TouchableComponent = TouchableOpacity;
   if (Platform.OS === 'android' && Platform.Version >= 21) {
@@ -18,9 +18,9 @@ const MealItem = props => {
     <View style={styles.mealItem}>
       <TouchableComponent onPress={props.onSelect}>
         <View>
-          <View style={{...styles.mealRow, ...styles.mealHeader}}>
+          <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
             <ImageBackground
-              source={{uri: props.image}}
+              source={{ uri: props.image }}
               style={styles.imgBackground}>
               <View style={styles.titleContainer}>
                 <Text style={styles.title} numberOfLines={1}>
@@ -29,10 +29,10 @@ const MealItem = props => {
               </View>
             </ImageBackground>
           </View>
-          <View style={{...styles.mealRow, ...styles.mealDetails}}>
-            <Text>{props.duration}min</Text>
-            <Text>{props.complexity.toUpperCase()}</Text>
-            <Text>{props.affordability.toUpperCase()}</Text>
+          <View style={{ ...styles.mealRow, ...styles.mealDetails }}>
+            <DefaultText>{props.duration}min</DefaultText>
+            <DefaultText>{props.complexity.toUpperCase()}</DefaultText>
+            <DefaultText>{props.affordability.toUpperCase()}</DefaultText>
           </View>
         </View>
       </TouchableComponent>
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
     backgroundColor: '#f5f5f5',
+    marginVertical: 10,
   },
   titleContainer: {
     backgroundColor: 'rgba(0,0,0,0.5)',

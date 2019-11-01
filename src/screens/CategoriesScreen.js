@@ -1,7 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
-import {CATEGORIES} from '../data/dummy-data';
+import { View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { CATEGORIES } from '../data/dummy-data';
 import CategoryGridTitle from '../components/CategoryGridTitle';
+
+import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import HeaderButton from '../components/HeaderButton';
 const CategoriesScreen = props => {
   const renderGridItem = itemData => {
     return (
@@ -36,5 +39,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
+CategoriesScreen.navigationOptions = navData => {
+  return {
+    headerLeft: (
+      < HeaderButtons HeaderButtonComponent={HeaderButton} >
+        <Item
+          title="Menu"
+          iconName="md-menu"
+          onPress={() => navData.navigation.toggleDrawer()} />
+      </HeaderButtons>
+    )
+  }
+}
 
 export default CategoriesScreen;
